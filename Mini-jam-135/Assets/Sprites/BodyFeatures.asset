@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: BodyFeatures
   m_EditorClassIdentifier: 
   Body:
-  - {fileID: 21300000, guid: 710c4e1541f465c418e9887f9b96bf3d, type: 3}
+  - {fileID: 21300000, guid: fa3bb6e58ca8ede42af4e8513be618ab, type: 3}
   Head:
-  - {fileID: 21300000, guid: e7a58f79f88202c4ca07f17a9fdb7992, type: 3}
+  - {fileID: 21300000, guid: 7d94a663d5a156644b3bae6f4e67f219, type: 3}
   Mouth:
-  - {fileID: 21300000, guid: 4faedf667031e914f9d9444219725877, type: 3}
+  - {fileID: 21300000, guid: dd54ff669b8505a41b0741cf2e928528, type: 3}
+  - {fileID: 21300000, guid: 6ae677d95ac7d9a459c5d768ba364735, type: 3}
+  - {fileID: 21300000, guid: 04877b909c2b2884e939402e03a46dd3, type: 3}
+  - {fileID: 21300000, guid: 478809b2faa49c948a7c0c64ff3ababf, type: 3}
+  - {fileID: 21300000, guid: 72e2d827336eccc48bc0e994da1d3c2c, type: 3}
   Nose:
   - {fileID: 21300000, guid: b10551dfaaf9a374b84c743c522a618b, type: 3}
   Eye:
   - {fileID: 21300000, guid: babcc048f273e0c478f542801a959167, type: 3}
   Hair:
-  - {fileID: 21300000, guid: 0683dfc1f22f5ae478c5479df5177e3a, type: 3}
+  - {fileID: 21300000, guid: 2850c8e419b38974d910f2ae89bc1e4f, type: 3}
+  - {fileID: 21300000, guid: 72eda4ea453d61d44bf01824a310321a, type: 3}
+  - {fileID: 21300000, guid: 16aca6af8ae7aea4aa8d8a86143cf666, type: 3}
+  - {fileID: 21300000, guid: 86aaaf1ff5e87b64ab7113233ac9a388, type: 3}
