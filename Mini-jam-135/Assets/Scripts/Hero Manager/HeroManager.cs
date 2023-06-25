@@ -22,6 +22,9 @@ public class HeroManager : MonoBehaviour
     public int dex;
     public BodyFeaturesList  bodyFeatureList;
 
+    public List<string> firstDialogue = new List<string>();
+    public List<string> futureDialogue = new List<string>();
+
     public int heroLevel = 1;
 
     public string heroName;
@@ -182,5 +185,9 @@ public class HeroManager : MonoBehaviour
 
         string randomName = randomPrefix + " " + randomMiddleName + " " + randomSuffix;
         return randomName;
+    }
+
+    public void LoadDialogues() {
+
     }
 }
