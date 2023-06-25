@@ -14,12 +14,12 @@ public class BodyFeaturesList : ScriptableObject
     public List<Sprite> GetRandomSprites()
     {
         List<Sprite> featuresReturned = new List<Sprite>();
-        featuresReturned.Add(Body[UnityEngine.Random.Range(0, Body.Count-1)]);
-        featuresReturned.Add(Head[UnityEngine.Random.Range(0, Head.Count-1)]);
-        featuresReturned.Add(Mouth[UnityEngine.Random.Range(0, Mouth.Count-1)]);
-        featuresReturned.Add(Nose[UnityEngine.Random.Range(0, Nose.Count-1)]);
-        featuresReturned.Add(Eye[UnityEngine.Random.Range(0, Eye.Count-1)]);
-        featuresReturned.Add(Hair[UnityEngine.Random.Range(0, Hair.Count-1)]);
+        featuresReturned.Add(Body[UnityEngine.Random.Range(0, Body.Count)]);
+        featuresReturned.Add(Head[UnityEngine.Random.Range(0, Head.Count)]);
+        featuresReturned.Add(Mouth[UnityEngine.Random.Range(0, Mouth.Count)]);
+        featuresReturned.Add(Nose[UnityEngine.Random.Range(0, Nose.Count)]);
+        featuresReturned.Add(Eye[UnityEngine.Random.Range(0, Eye.Count)]);
+        featuresReturned.Add(Hair[UnityEngine.Random.Range(0, Hair.Count)]);
         return(featuresReturned);
     }
 }

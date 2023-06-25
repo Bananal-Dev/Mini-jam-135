@@ -25,7 +25,7 @@ public class Manager : MonoBehaviour
     {
         while(currentHeroes.Count < 5)
         {
-            currentHeroes.Add(Instantiate(heroPrefab, new Vector2(0f, 0f), Quaternion.identity));
+            currentHeroes.Add(Instantiate(heroPrefab, new Vector2(0f, -0.93f), Quaternion.identity));
             currentHeroes[currentHeroes.Count-1].SetActive(false);
             currentHeroes[currentHeroes.Count-1].GetComponent<HeroManager>().onClick.AddListener(NextHero);
         }
@@ -39,5 +39,7 @@ public class Manager : MonoBehaviour
         currentHeroes[currentHero].SetActive(false);
         currentHero++;
         currentHeroes[currentHero].SetActive(true);
+        Quest quest = new Quest();
+        quest.querstAttribute = Quest.questAttributes.cha;
     }
 }

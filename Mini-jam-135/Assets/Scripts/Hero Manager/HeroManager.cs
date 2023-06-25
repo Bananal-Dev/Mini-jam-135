@@ -11,7 +11,6 @@ public class HeroManager : MonoBehaviour
 
     public UnityEvent onClick;
     private Color heroSkinColor;
-
     public Canvas infoCanva;
     private int availablePoints;
     [SerializeField] int maxInitialPoints = 13;
@@ -46,9 +45,7 @@ public class HeroManager : MonoBehaviour
             DefineRandomBodyFeature();
             DefineRandomAttributes();    
         }
-        
     }
-
 
 
     private void OnMouseEnter() {
@@ -70,7 +67,7 @@ public class HeroManager : MonoBehaviour
                 bodyFeaturesSprites[i].GetComponent<Transform>().localScale = new Vector3(1.3f, 1.3f, 1.3f);
                 bodyFeaturesSprites[i].color = heroSkinColor;
            }
-           if(i==1)
+           if(i==1 || i==3)
            {
                 bodyFeaturesSprites[i].color = heroSkinColor;
            }
@@ -102,7 +99,7 @@ public class HeroManager : MonoBehaviour
     public void UpgradeRandomAttribues(int numberOfPoints)
     {
         int numberOfRandoms = 4;
-
+        
         List<int> randoms = new List<int>();
         for(int i = 0; i < numberOfRandoms; i++)
         {
@@ -134,6 +131,7 @@ public class HeroManager : MonoBehaviour
     public void LevelUp()
     {
         heroLevel++;
+        UpgradeRandomAttribues(3);
     }
 
     private void DefineSkinColor() {
@@ -152,12 +150,6 @@ public class HeroManager : MonoBehaviour
         // Create and return the random skin color
         Color skinColor = new Color(randomRed, randomGreen, randomBlue);
         heroSkinColor = skinColor;
-    }
-    private void OnMouseDown() {
-        LevelUp();
-        UpgradeRandomAttribues(5);
-        UpdateInfo();
-        onClick.Invoke();
     }
 
     public string GetRandomMedievalName()

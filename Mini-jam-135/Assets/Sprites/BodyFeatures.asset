@@ -26,9 +26,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 478809b2faa49c948a7c0c64ff3ababf, type: 3}
   - {fileID: 21300000, guid: 72e2d827336eccc48bc0e994da1d3c2c, type: 3}
   Nose:
-  - {fileID: 21300000, guid: b10551dfaaf9a374b84c743c522a618b, type: 3}
+  - {fileID: 21300000, guid: bb540e37cccb232479be38549364efbf, type: 3}
+  - {fileID: 21300000, guid: 88d5098bec6997e4f90d61f3081b8cdb, type: 3}
+  - {fileID: 21300000, guid: 7d31f2a7e8891f84ab826bd260d4015a, type: 3}
+  - {fileID: 21300000, guid: fcb5a526b313ad74c85cc3e02bb395ed, type: 3}
   Eye:
-  - {fileID: 21300000, guid: babcc048f273e0c478f542801a959167, type: 3}
+  - {fileID: 21300000, guid: ad6b3e145947e3744a544034bd685c4b, type: 3}
+  - {fileID: 21300000, guid: 25e8938b21d06524698429604e5f5643, type: 3}
+  - {fileID: 21300000, guid: de15abcaae1ba7141a4f57c4b41ef356, type: 3}
+  - {fileID: 21300000, guid: 2b28d4a140c16884191fdb434521b438, type: 3}
+  - {fileID: 21300000, guid: b19ddfba71e783847aee332d0898de1c, type: 3}
+  - {fileID: 21300000, guid: c076bd8480a7d644b9c5ba10de3ec163, type: 3}
+  - {fileID: 21300000, guid: b49c4ded1c60b2d4fb4eafa37a54a80e, type: 3}
+  - {fileID: 21300000, guid: 96147befeebaa574b8a7f681fe6dc547, type: 3}
+  - {fileID: 21300000, guid: e0082b860b08ca241a73a24b48a1c99f, type: 3}
   Hair:
   - {fileID: 21300000, guid: 2850c8e419b38974d910f2ae89bc1e4f, type: 3}
   - {fileID: 21300000, guid: 72eda4ea453d61d44bf01824a310321a, type: 3}
