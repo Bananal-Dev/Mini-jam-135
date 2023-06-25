@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: BodyFeatures
   m_EditorClassIdentifier: 
   Body:
-  - {fileID: 21300000, guid: fa3bb6e58ca8ede42af4e8513be618ab, type: 3}
+  - {fileID: 21300000, guid: 90a814099a1bb534c8390b5c59bb43e6, type: 3}
+  - {fileID: 21300000, guid: 29320944d90a16746a91cb673faa3cb6, type: 3}
+  - {fileID: 21300000, guid: 8a4b805fb6c6778498a54927da26ae93, type: 3}
+  - {fileID: 21300000, guid: 0524d46cbeef93b4e96f5ad29a178026, type: 3}
   Head:
   - {fileID: 21300000, guid: 7d94a663d5a156644b3bae6f4e67f219, type: 3}
   Mouth:
