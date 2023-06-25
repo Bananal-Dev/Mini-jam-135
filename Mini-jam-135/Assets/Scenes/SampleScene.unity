@@ -456,9 +456,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da36b79b05d16b049b8c87ecfd99c040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardsTableObject: []
   currentHeroes: []
   currentHero: 0
   heroPrefab: {fileID: 5425195298804464645, guid: 85042213e015c3b478cebee357e042ca, type: 3}
+  questprefab: {fileID: 5124019057956057703, guid: a14bc60e2e62e164c84fe10825550489, type: 3}
+  basicQuests: []
+  adventurerQuests: []
+  heroQuests: []
+  questPerHero: []
+  questsOnTable: []
+  maxHeroes: 5
+  maxQuestOnTable: 4
+  basicChance: 10
+  adventurerChance: 0
+  heroChance: 0
 --- !u!1 &1021217733
 GameObject:
   m_ObjectHideFlags: 0
