@@ -12,6 +12,7 @@ public class OptionsMenuController : MonoBehaviour
 
     void Start()
     {
+
         if(ApplicationController.isFirstTime())
         {
             ApplicationController.SetDefaultConfigs();
@@ -34,8 +35,8 @@ public class OptionsMenuController : MonoBehaviour
     public void SetSFXSound()
     {
         if (!toggleSoundSFX.isOn)
-            ApplicationController.EnableSoundSFX();
-        
+            ApplicationController.EnableSoundSFX();  
+            
         else
             ApplicationController.DisableSoundSFX();
 

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetString("test","Funciona");
         ActiveMenu(initialMenu);
     }
 
@@ -37,6 +36,6 @@ public class MenuController : MonoBehaviour
 
     public void Play()
     {
-        Application.LoadLevel(1);
+        SceneManager.LoadScene(1);
     }
 }
