@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
+using UnityEditor;
 
 public class QuestManager : MonoBehaviour
 {
+    public Image questCardBig;
+    public SpriteRenderer questCardSmall;
+    public Manager gameManager;
     public Canvas infoCanva;
     public Quest myQuest;
     public SpriteRenderer smallCard;
@@ -24,12 +29,6 @@ public class QuestManager : MonoBehaviour
         infoCanva.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnMouseEnter() {
         infoCanva.enabled = true;
     }
@@ -41,7 +40,7 @@ public class QuestManager : MonoBehaviour
     public void UpdateQuestCards() {
 
         descriptionText.text = myQuest.questDescription;
-
+        string spriteName = myQuest.questLevel.ToString()+'.'+myQuest.questAttribute.ToString()+'.'+myQuest.questTipo.ToString()+".png";
         if(myQuest.questAttribute == Quest.questAttributes.cha) {
             bigCard.color = new Color(0.35f, 0.09f, 0.56f);
             smallCard.color = new Color(0.35f, 0.09f, 0.56f);
@@ -72,9 +71,11 @@ public class QuestManager : MonoBehaviour
             caveira3Image.enabled = true;
             caveira3Sprite.enabled = true;
         }
+        questCardBig.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Resources/Sprites/QuestCards/"+spriteName);
+        questCardSmall.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Resources/Sprites/QuestCards/"+spriteName);
     }
     
     private void OnMouseDown() {
-        Debug.Log("Clicou na missão");
+        gameManager.SelectQuest(myQuest, gameObject);
     }
 }

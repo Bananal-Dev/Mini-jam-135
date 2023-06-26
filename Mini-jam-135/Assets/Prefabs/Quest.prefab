@@ -691,6 +691,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d282d2db290b949b9af11a67de8611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questCardBig: {fileID: 5124019058179202239}
+  questCardSmall: {fileID: 5124019056635805945}
+  gameManager: {fileID: 0}
   infoCanva: {fileID: 5124019056713899185}
   myQuest: {fileID: 0}
   smallCard: {fileID: 5124019057632383019}

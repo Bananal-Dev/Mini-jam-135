@@ -18,9 +18,10 @@ public class Manager : MonoBehaviour
     public int maxHeroes = 5;
     public int maxQuestOnTable = 4;
     public int basicChance = 10;
-    public int adventurerChance = 20;
-    public int heroChance = 30;
+    public int adventurerChance = 0;
+    public int heroChance = 0;
 
+    public int deadHeroesToday = 0;
     void Start()
     {
         LoadQuests();
@@ -29,6 +30,8 @@ public class Manager : MonoBehaviour
 
     public void StartDay()
     {
+        deadHeroesToday = 0;
+        questPerHero.Clear();
         questsOnTable.Clear();
         FillTable();
         while(currentHeroes.Count < maxHeroes)
@@ -42,18 +45,52 @@ public class Manager : MonoBehaviour
     }
 
     public void EndDay() {
+        for(int i = 0; i < questPerHero.Count; i++) {
+            if(HeroSuccess(currentHeroes[i], questPerHero[i])) {
+                currentHeroes[i].GetComponent<HeroManager>().LevelUp();
+            }
+            else {
+                deadHeroesToday++;
+                DestroyImmediate(currentHeroes[i]);
+            }
+        }
+        Debug.Log(deadHeroesToday);
+        currentHeroes.RemoveAll(item => item==null);
+        StartDay();
+    }
 
+    public bool HeroSuccess(GameObject hero, Quest quest) {
+        float attribVal;
+        float questLevel;
+        float herolevel = hero.GetComponent<HeroManager>().heroLevel;
+        if(quest.questAttribute == Quest.questAttributes.cha)
+            attribVal = hero.GetComponent<HeroManager>().cha;
+        else if(quest.questAttribute == Quest.questAttributes.inte)
+            attribVal = hero.GetComponent<HeroManager>().inte;
+        else if(quest.questAttribute == Quest.questAttributes.str)
+            attribVal = hero.GetComponent<HeroManager>().str;
+        else
+            attribVal = hero.GetComponent<HeroManager>().dex;    
+        if(quest.questLevel == Quest.questLevels.basic)
+            questLevel = 1;
+        else if(quest.questLevel == Quest.questLevels.adventurer)
+            questLevel = 2;  
+        else
+            questLevel = 3; 
+        float successChance = 100/(1+Mathf.Pow(2.72f,-1*((attribVal/5)-(Mathf.Pow(questLevel,1.2f))+(herolevel/6))));
+        return (UnityEngine.Random.Range(0,101)<successChance);
     }
 
     public void NextHero()
     {
+        currentHeroes[currentHero].SetActive(false);
         if(currentHero == maxHeroes-1) {
             EndDay();
             return;
         }
-        currentHeroes[currentHero].SetActive(false);
         currentHero++;
         currentHeroes[currentHero].SetActive(true);
+        currentHeroes[currentHero].GetComponent<HeroManager>().OnActivate();
     }
     public void AddQuestToTable()
     {
@@ -78,13 +115,14 @@ public class Manager : MonoBehaviour
             cardsTableObject.Add(quest);
             quest.GetComponent<QuestManager>().myQuest = questsOnTable[i];
             quest.GetComponent<QuestManager>().UpdateQuestCards();
+            quest.GetComponent<QuestManager>().gameManager = gameObject.GetComponent<Manager>();
         }
     }
     public Quest GetRandomQuest()
     {
         int maxChance = basicChance + adventurerChance + heroChance;
         int choosenChance = UnityEngine.Random.Range(0, maxChance);
-        if(choosenChance < (basicChance + adventurerChance)) {
+        if(choosenChance <= (basicChance)) {
             return basicQuests[UnityEngine.Random.Range(0, basicQuests.Count)];
         }
         else if(choosenChance > basicChance && choosenChance <= (basicChance + adventurerChance)) {
@@ -94,10 +132,13 @@ public class Manager : MonoBehaviour
             return heroQuests[UnityEngine.Random.Range(0, heroQuests.Count)];
         }
     }
-    public void SelectQuest(Quest selectedQuest)
+    public void SelectQuest(Quest selectedQuest, GameObject questObject)
     {
         questPerHero.Add(selectedQuest);
-        AddQuestToTable();
+        questsOnTable.Remove(selectedQuest);
+        DestroyImmediate(questObject);
+        cardsTableObject.Remove(questObject);
+        FillTable();
         NextHero();
     }
     public void LoadQuests()
