@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,9 @@ public class Manager : MonoBehaviour
 {
     public List<GameObject> cardsTableObject = new List<GameObject>();
     public List<GameObject> currentHeroes;
+    public Canvas dayRelatory;
+    public Canvas coinCanva;
+    public Canvas shopCanva;
     public int currentHero;
     public GameObject heroPrefab;
     public GameObject questprefab;
@@ -17,19 +21,28 @@ public class Manager : MonoBehaviour
     public List<Quest> questsOnTable = new List<Quest>();
     public int maxHeroes = 5;
     public int maxQuestOnTable = 4;
-    public int basicChance = 10;
+    public int basicChance = 5;
     public int adventurerChance = 0;
     public int heroChance = 0;
-
     public int deadHeroesToday = 0;
+    public TMP_Text deadHeroesText;
+    public TMP_Text levelUpHeroesText;
+    public TMP_Text goldEarnedText;
+    public TMP_Text peopleTrustText;
+    public TMP_Text villainSatisfactionText;
+
+    private bool levelTenHero = false;
     void Start()
     {
         LoadQuests();
         StartDay();
+        shopCanva.enabled = false;
+        dayRelatory.enabled = false;
     }
 
     public void StartDay()
     {
+        dayRelatory.enabled = false;
         deadHeroesToday = 0;
         questPerHero.Clear();
         questsOnTable.Clear();
@@ -48,15 +61,55 @@ public class Manager : MonoBehaviour
         for(int i = 0; i < questPerHero.Count; i++) {
             if(HeroSuccess(currentHeroes[i], questPerHero[i])) {
                 currentHeroes[i].GetComponent<HeroManager>().LevelUp();
+                if(currentHeroes[i].GetComponent<HeroManager>().heroLevel >= 10) {
+                    levelTenHero = true;
+                }
+                coinCanva.GetComponent<UiManager>().ReputationBarUp();
             }
             else {
                 deadHeroesToday++;
+                for(int j = 0; j < currentHeroes[i].GetComponent<HeroManager>().heroLevel; j++) {
+                    coinCanva.GetComponent<UiManager>().ReputationBarDown();
+                }
                 DestroyImmediate(currentHeroes[i]);
+                coinCanva.GetComponent<UiManager>().VilanBarUp();
             }
         }
-        Debug.Log(deadHeroesToday);
         currentHeroes.RemoveAll(item => item==null);
-        StartDay();
+        foreach(GameObject card in cardsTableObject) {
+            DestroyImmediate(card);
+        }
+        cardsTableObject.Clear();
+        if(coinCanva.GetComponent<UiManager>().currentReputationStatus <= 0) {
+            Debug.Log("Perdeu por confiança");
+        }
+        else if(coinCanva.GetComponent<UiManager>().currentVilanStatus >= 100) {
+            Debug.Log("Ganhou por satisfação");
+        }
+        else if( levelTenHero) {
+            Debug.LogFormat("Perdeu por level 10");
+        }
+        else {
+            StartRelatory();
+        }
+    }
+
+    public void StartRelatory() {
+        dayRelatory.enabled =true;
+        coinCanva.GetComponent<UiManager>().ChangeCoinValue(50*deadHeroesToday);
+        deadHeroesText.text = deadHeroesToday.ToString() + " heroes died today";
+        levelUpHeroesText.text = (5-deadHeroesToday).ToString() + " heroes leveled up today";
+        goldEarnedText.text = (50*deadHeroesToday).ToString() + " gold earned";
+        int trustPercentage = (5-deadHeroesToday)*5 - 5*deadHeroesToday;
+        if(trustPercentage < 0)
+        {
+            peopleTrustText.text = (trustPercentage).ToString() + "% people trust";
+        }
+        else
+        {
+            peopleTrustText.text = "+" + (trustPercentage).ToString() + "% people trust";
+        }
+        villainSatisfactionText.text = (deadHeroesToday*3).ToString() + "% villain satisfaction";    
     }
 
     public bool HeroSuccess(GameObject hero, Quest quest) {
@@ -77,7 +130,7 @@ public class Manager : MonoBehaviour
             questLevel = 2;  
         else
             questLevel = 3; 
-        float successChance = 100/(1+Mathf.Pow(2.72f,-1*((attribVal/5)-(Mathf.Pow(questLevel,1.2f))+(herolevel/6))));
+        float successChance = 100/(1+Mathf.Pow(2.72f,-1*((attribVal/4)-(Mathf.Pow(questLevel,1.3f))+(herolevel/6))));
         return (UnityEngine.Random.Range(0,101)<successChance);
     }
 
