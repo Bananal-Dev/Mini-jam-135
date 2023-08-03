@@ -61,5 +61,12 @@ public class UiManager : MonoBehaviour
         vilanBarScale.y = (float)currentVilanStatus/maxVilanStatus;
         vilanBar.rectTransform.localScale = vilanBarScale;
     }
+    
+
+    //UI para explicar as barras
+    public void OnMouseEnter()
+    {
+        Debug.Log("Mouse entrou");
+    } 
 
 }

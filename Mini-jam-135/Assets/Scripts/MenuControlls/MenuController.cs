@@ -35,6 +35,7 @@ public class MenuController : MonoBehaviour
         ApplicationController.ExitGame(); 
     }
 
+    [System.Obsolete]
     public void Play()
     {
         Application.LoadLevel(1);
