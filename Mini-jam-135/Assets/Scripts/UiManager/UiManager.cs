@@ -67,12 +67,13 @@ public class UiManager : MonoBehaviour
 
     //INSTANCIANDO AS BOXES DE EXPLICAÇÃO NAS BARRAS
         
-    public void boxReputationBar()
+    public void BoxReputationBar()
     {
-
+       Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+       Debug.Log(mousePosition);
     }
 
-    public void boxReputationVilan()
+    public void BoxReputationVilan()
     {
 
     }

@@ -7,6 +7,7 @@ public class MenuController : MonoBehaviour
 {
     public GameObject initialMenu;
     public GameObject optionsMenu;
+    
 
     void Start()
     {

@@ -9,11 +9,14 @@ public class BarControl : MonoBehaviour
 {
     public BoxCollider2D boxReputation; 
     public string barTag; 
+    public UiManager uiManager;
+       
 
     void Start()
     {
         boxReputation =GetComponent<BoxCollider2D>(); 
         barTag = gameObject.tag;
+        uiManager = new UiManager();
     }
 
     // Update is called once per frame
@@ -26,11 +29,12 @@ public class BarControl : MonoBehaviour
     {
         
         if(barTag == "ReputationBar")
-            Debug.Log("Mouse entrou na barra de reputação");
+            uiManager.BoxReputationBar();
         
         else
             Debug.Log("Mouse entrou na barra de vilania");
     }
-
+    
+    
     
 }
