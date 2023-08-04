@@ -18,6 +18,9 @@ public class UiManager : MonoBehaviour
     public int currentVilanStatus = 5;
     public int maxVilanStatus = 100; 
 
+    //UI caixas explicativas
+    public GameObject boxReputationExplain; 
+
 
     void Start()
     {
@@ -61,12 +64,17 @@ public class UiManager : MonoBehaviour
         vilanBarScale.y = (float)currentVilanStatus/maxVilanStatus;
         vilanBar.rectTransform.localScale = vilanBarScale;
     }
-    
 
-    //UI para explicar as barras
-    public void OnMouseEnter()
+    //INSTANCIANDO AS BOXES DE EXPLICAÇÃO NAS BARRAS
+        
+    public void boxReputationBar()
     {
-        Debug.Log("Mouse entrou");
-    } 
+
+    }
+
+    public void boxReputationVilan()
+    {
+
+    }
 
 }

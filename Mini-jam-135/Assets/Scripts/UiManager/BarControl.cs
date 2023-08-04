@@ -1,10 +1,11 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class ReputationBar : MonoBehaviour
+public class BarControl : MonoBehaviour
 {
     public BoxCollider2D boxReputation; 
     public string barTag; 
@@ -21,8 +22,9 @@ public class ReputationBar : MonoBehaviour
         
     }
 
-    void OnMouseEnter()
+    void OnMouseOver()
     {
+        
         if(barTag == "ReputationBar")
             Debug.Log("Mouse entrou na barra de reputação");
         
@@ -30,4 +32,5 @@ public class ReputationBar : MonoBehaviour
             Debug.Log("Mouse entrou na barra de vilania");
     }
 
+    
 }
