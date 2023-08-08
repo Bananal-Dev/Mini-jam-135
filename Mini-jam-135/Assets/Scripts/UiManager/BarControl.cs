@@ -8,15 +8,16 @@ using UnityEngine.UI;
 public class BarControl : MonoBehaviour
 {
     public BoxCollider2D boxReputation; 
-    public string barTag; 
-    public UiManager uiManager;
-       
+    private string barTag; 
+    private UiManager uiManager;
+    public GameObject canva; 
+    
 
     void Start()
     {
         boxReputation =GetComponent<BoxCollider2D>(); 
         barTag = gameObject.tag;
-        uiManager = new UiManager();
+        uiManager = canva.GetComponent<UiManager>();
     }
 
     // Update is called once per frame
@@ -34,6 +35,7 @@ public class BarControl : MonoBehaviour
         else
             Debug.Log("Mouse entrou na barra de vilania");
     }
+    
     
     
     

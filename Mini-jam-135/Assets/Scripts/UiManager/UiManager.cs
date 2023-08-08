@@ -20,11 +20,13 @@ public class UiManager : MonoBehaviour
 
     //UI caixas explicativas
     public GameObject boxReputationExplain; 
+    public Vector2 ajuste;
 
 
     void Start()
     {
         coinStatus.text=coinValue.ToString();
+        ajuste = new Vector2 (-1.7f, -1.0f);
     }
 
     //alteracao de valor monetario
@@ -69,8 +71,10 @@ public class UiManager : MonoBehaviour
         
     public void BoxReputationBar()
     {
-       Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
-       Debug.Log(mousePosition);
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+        Debug.Log(mousePosition);
+        boxReputationExplain.SetActive(true);
+        boxReputationExplain.transform.position = mousePosition+ ajuste;  
     }
 
     public void BoxReputationVilan()
