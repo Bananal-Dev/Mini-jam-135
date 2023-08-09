@@ -22,7 +22,9 @@ public class UiManager : MonoBehaviour
     public GameObject boxReputationExplain; 
     public GameObject boxVilanExplain; 
     public Vector2 ajuste;
-
+    public TMP_Text textReputation; 
+    
+    
 
     void Start()
     {
@@ -75,7 +77,8 @@ public class UiManager : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
         Debug.Log(mousePosition);
         boxReputationExplain.SetActive(true);
-        boxReputationExplain.transform.position = mousePosition+ ajuste;  
+        boxReputationExplain.transform.position = mousePosition+ ajuste; 
+        textReputation.text = "Sua reputação atual é "+ currentReputationStatus; 
     }
 
     public void BoxVilanBar()
