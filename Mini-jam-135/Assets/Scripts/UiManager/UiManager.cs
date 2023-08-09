@@ -20,6 +20,7 @@ public class UiManager : MonoBehaviour
 
     //UI caixas explicativas
     public GameObject boxReputationExplain; 
+    public GameObject boxVilanExplain; 
     public Vector2 ajuste;
 
 
@@ -77,9 +78,18 @@ public class UiManager : MonoBehaviour
         boxReputationExplain.transform.position = mousePosition+ ajuste;  
     }
 
-    public void BoxReputationVilan()
+    public void BoxVilanBar()
     {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+        Debug.Log(mousePosition);
+        boxVilanExplain.SetActive(true);
+        boxVilanExplain.transform.position = mousePosition+ajuste;
+    }
 
+    public void CleanBoxExplain()
+    {
+        boxReputationExplain.SetActive(false);
+        boxVilanExplain.SetActive(false);
     }
 
 }

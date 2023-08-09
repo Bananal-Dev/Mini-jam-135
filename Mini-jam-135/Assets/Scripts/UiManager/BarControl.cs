@@ -31,12 +31,14 @@ public class BarControl : MonoBehaviour
         
         if(barTag == "ReputationBar")
             uiManager.BoxReputationBar();
-        
+
         else
-            Debug.Log("Mouse entrou na barra de vilania");
+            uiManager.BoxVilanBar();
     }
     
-    
-    
-    
+    void OnMouseExit()
+    {
+        uiManager.CleanBoxExplain();
+    }
+
 }
