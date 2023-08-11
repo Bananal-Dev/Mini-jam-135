@@ -21,15 +21,16 @@ public class UiManager : MonoBehaviour
     //UI caixas explicativas
     public GameObject boxReputationExplain; 
     public GameObject boxVilanExplain; 
-    public Vector2 ajuste;
+    private Vector2 ajuste;
     public TMP_Text textReputation; 
+    public TMP_Text textVillan;
     
     
 
     void Start()
     {
         coinStatus.text=coinValue.ToString();
-        ajuste = new Vector2 (-1.7f, -1.0f);
+        ajuste = new Vector2 (-3.2f, -1.0f);
     }
 
     //alteracao de valor monetario
@@ -78,7 +79,7 @@ public class UiManager : MonoBehaviour
         Debug.Log(mousePosition);
         boxReputationExplain.SetActive(true);
         boxReputationExplain.transform.position = mousePosition+ ajuste; 
-        textReputation.text = "Sua reputação atual é "+ currentReputationStatus; 
+        textReputation.text = "Your reputation is: "+ currentReputationStatus +".      Once you reach zero, you'll face defeat."; 
     }
 
     public void BoxVilanBar()
@@ -87,6 +88,7 @@ public class UiManager : MonoBehaviour
         Debug.Log(mousePosition);
         boxVilanExplain.SetActive(true);
         boxVilanExplain.transform.position = mousePosition+ajuste;
+        textVillan.text = "Your relationship with the villain is: "+ currentVilanStatus +".  Once you reach a hundread, you'll win.";
     }
 
     public void CleanBoxExplain()
